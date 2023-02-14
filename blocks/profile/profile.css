@@ -14,6 +14,7 @@
 
 .profile__information {
     max-width: 336px;
+    max-height: 73px;
     width: 100%;
     color: #ffffff;
     display: grid;
@@ -44,11 +45,13 @@
 
 .profile__edit-button {
     grid-area: edit-button;
+    margin: 37px 0 0;
     background-image: url(../../images/edit-button.svg);
     background-color: transparent;
     background-size: cover;
     background-repeat: no-repeat;
     box-sizing: border-box;
+    border: #ffffff;
     width: 24px;
     height: 24px;
 }
@@ -58,9 +61,12 @@
     background-size: cover;
     background-repeat: no-repeat;
     box-sizing: border-box;
+    border: #ffffff;
     width: 150px;
     height: 50px;
     position: absolute;
     top: 35px;
     right: 0;
+    bottom: 35px;
+    padding: 0;
 }
