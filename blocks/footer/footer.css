@@ -1,0 +1,13 @@
+.footer {
+    max-width: 318px;
+    max-height: 18px;
+    width: 100%;
+    margin: 67px auto 60px 200px;
+}
+
+.footer__cppyright {
+    font-size: 18px;
+    line-height: 22px;
+    font-weight: 400;
+    color: #545454;
+}
