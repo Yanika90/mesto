@@ -1,10 +1,10 @@
-/* .popup {
+.popup {
     width: 100%;
     position: fixed;
     top: 0;
     left: 0;
     display: none;
-     display: flex; 
+    /* display: flex; */
 }
 
 .popup::before {
@@ -35,6 +35,14 @@
     z-index: 2;
 }
 
+@media (max-width: 460px) {
+    .popup__container {
+        max-width: 282px;
+        margin-top: 123px;
+        padding: 25px 22px;
+    }
+}
+
 .popup__title {
     font-size: 24px;
     line-height: 29px;
@@ -42,6 +50,14 @@
     margin: 0;
     padding: 0 28px 54px 0;
     height: 23px;
+}
+
+@media (max-width: 460px) {
+    .popup__title {
+        font-size: 18px;
+        line-height: 22px;
+        padding: 0 0 75px;
+    }
 }
 
 .popup__input-form {
@@ -53,13 +69,23 @@
     align-items: stretch;
 }
 
+@media (max-width: 460px) {
+    .popup__input-form {
+        max-width: 238px;
+        margin-right: 0;
+    }
+}
+
 .popup__input {
     width: 100%;
     max-height: 27px;
+    font-size: 14px;
+    line-height: 17px;
+    font-weight: 400;
     font-family: inherit;
     border: 0;
     box-sizing: border-box;
-    border-bottom: 1px solid rgb(0, 0, 0, .2);
+    border-bottom: 1px solid rgb(0, 0, 0, 0.2);
     padding: 0 0 13px;
 }
 
@@ -79,8 +105,25 @@
     color: rgb(0, 0, 0);
 }
 
+/* 
+как вариант .popup__input {
+    width: 100%;
+    max-height: 27px;
+    font-size: 14px;
+    line-height: 17px;
+    font-weight: 400;
+    border: 0;
+    box-sizing: border-box;
+    border-bottom: 1px solid rgb(0, 0, 0, 0.2);
+    padding: 0 0 13px;
+}
+
+.popup__input::placeholder {
+    font-family: inherit;
+} */
+
 .popup__button_close {
-    background-image: url(../images/close-button.png);
+    background-image: url(../../../images/close-button.png);
     position: absolute;
     width: 32px;
     height: 32px;
@@ -89,10 +132,20 @@
     z-index: 3;
 }
 
+@media (max-width: 530px) {
+    .popup__button_close {
+        
+        width: 20px;
+        height: 20px;
+        right: 0;
+        top: -36px;
+    }
+}
+
 .popup__button_save {
     margin-top: 48px;
     padding: 0;
-    background-image: url(../images/submit-button-rectangle.jpg);
+    background-image: url(../../../images/submit-button-rectangle.jpg);
     border-radius: 2px;
     width: 358px;
     height: 50px;
@@ -101,4 +154,14 @@
     font-weight: 400;
     text-align: center;
     color: rgb(255, 255, 255);
-} */
+}
+
+@media (max-width: 460px) {
+    .popup__button_save {
+        width: 238px;
+        margin-top: 45px;
+        height: 46px;
+        font-size: 14px;
+        line-height: 17px;
+    }
+}
