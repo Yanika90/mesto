@@ -18,6 +18,7 @@
 @import url(../blocks/photo/__image/photo__image.css);
 @import url(../blocks/photo/__title/photo__title.css);
 @import url(../blocks/photo/__like-button/photo__like-button.css);
+@import url(../blocks/photo/__like-button/_active/photo__like-button_active.css);
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__cppyright/footer__cppyright.css);
 @import url(../blocks/popup/popup.css);
