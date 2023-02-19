@@ -6,7 +6,6 @@
 @media (max-width: 1279px) {
     .photos {
         width: calc(100% - (51px * 2));
-
     }
 }
 
@@ -15,15 +14,4 @@
         width: calc(100% - (19px * 2));
         margin-top: 36px;
     }
-}
-
-
-.photos__list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px 17px;
 }

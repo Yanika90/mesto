@@ -1,0 +1,11 @@
+.photo__like-button {
+    grid-area: like;
+    margin: 30px 20px 30px auto;
+    background-image: url(../../../images/like-button.png);
+    width: 22px;
+    height: 19px;
+}
+
+.photo__like-button_active {
+    background-color: rgb(0, 0, 0);
+}

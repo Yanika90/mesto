@@ -8,35 +8,3 @@
         "image image"
         "title like";
 }
-
-.photo__image {
-    grid-area: image;
-    width: 100%;
-    aspect-ratio: 1/1;
-    border-radius: 10px 10px 0px 0px;
-}
-
-.photo__title {
-    grid-area: title;
-    margin: 0;
-    padding: 25px 0 31px 21px;
-    color: rgb(0, 0, 0);
-    font-size: 24px;
-    line-height: 29px;
-    font-weight: 900;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-}
-
-.photo__like {
-    grid-area: like;
-    margin: 30px 20px 30px auto;
-    background-image: url(../../images/like-button.svg);
-    width: 22px;
-    height: 19px;
-}
-
-.photo__like_active {
-    background-color: rgb(0, 0, 0);
-}
