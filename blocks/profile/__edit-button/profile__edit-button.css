@@ -1,5 +1,5 @@
 .profile__edit-button {
-    background-image: url(../../../images/edit-button.png);
+    background-image: url(../../../images/edit-button.svg);
     width: 24px;
     height: 24px;
     align-self: flex-end;
@@ -7,9 +7,13 @@
     padding: 0;
 }
 
+.profile__edit-button:hover {
+    opacity: 0.6;
+}
+
 @media (max-width: 320px) {
     .profile__edit-button {
-        background-image: url(../../../images/edit-button-for-mobile.png);
+        background-image: url(../../../images/edit-button-for-mobile.svg);
         width: 18px;
         height: 18px;
         margin: 0 0 8px 0;
