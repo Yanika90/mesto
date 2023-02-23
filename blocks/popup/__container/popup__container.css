@@ -1,6 +1,5 @@
 .popup__container {
     max-width: 430px;
-    margin-top: 195px;
     padding: 34px 36px 37px;
     background-color: rgb(255, 255, 255);
     box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
@@ -12,7 +11,6 @@
 @media (max-width: 460px) {
     .popup__container {
         max-width: 282px;
-        margin-top: 123px;
         padding: 25px 22px;
     }
 }
