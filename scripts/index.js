@@ -79,15 +79,18 @@ const photoCards = [
     }
   ];
 
-  const cardsContainer = document.querySelector('.photos')
+  const cardsContainer = document.querySelector('.photos');
 
-  photoCards.forEach(function(card) {
+  const createCard = (card) => {
     const newCard = document.querySelector('#cardTemplate').content.cloneNode(true);
     const cardTitle = newCard.querySelector('.photo__title');
     cardTitle.textContent = card.title;
     const cardImage = newCard.querySelector('.photo__image');
     cardImage.setAttribute('src', card.image);
     cardImage.setAttribute('alt', card.alt);
-    cardsContainer.append(newCard)
-})
+    cardsContainer.append(newCard);
+  }
+
+  photoCards.forEach(createCard)
+
 
