@@ -1,7 +1,17 @@
 .photos {
     width: calc(100% - (200px * 2));
     margin: 51px auto 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 20px;
 }
+
+.photos:first-child {
+    column-gap: 0;
+}
+
+
 
 @media (max-width: 1279px) {
     .photos {

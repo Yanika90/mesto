@@ -1,7 +1,8 @@
 .photo__image {
     grid-area: image;
     width: 100%;
-    background-size: cover;
+    object-fit: cover;
+    object-position: center;
     aspect-ratio: 1/1;
     border-radius: 10px 10px 0px 0px;
 }
