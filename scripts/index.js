@@ -88,9 +88,17 @@ const photoCards = [
     const cardImage = newCard.querySelector('.photo__image');
     cardImage.setAttribute('src', card.image);
     cardImage.setAttribute('alt', card.alt);
+    const deleteButton = newCard.querySelector('.photo__delete-button');
+    deleteButton.addEventListener('click', handleDeleteButtonClick);
     cardsContainer.append(newCard);
   }
 
   photoCards.forEach(createCard)
+
+  function handleDeleteButtonClick(evt) {
+    const button = evt.target;
+    const photo = button.closest('.photo');
+    photo.remove();
+  }
 
 
