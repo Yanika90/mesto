@@ -32,7 +32,9 @@
                             type="button"
                             class="button profile__edit-button"
                         ></button>
-                        <p class="profile__about-yourself">Исследователь океана</p>
+                        <p class="profile__about-yourself">
+                            Исследователь океана
+                        </p>
                     </div>
                     <button
                         aria-label="Добавить"
@@ -42,24 +44,22 @@
                 </section>
 
                 <section class="photos">
-                    
-                        <template class="template" id="cardTemplate">
-                            <div class="photo">
-                                <button
-                                    aria-label="Удалить"
-                                    type="button"
-                                    class="button photo__delete-button"
-                                ></button>
-                                <img src="#" alt="" class="photo__image" />
-                                <h2 class="photo__title"></h2>
-                                <button
-                                    aria-label="Нравится"
-                                    type="button"
-                                    class="button photo__like-button"
-                                ></button>
-                            </div>
-                        </template>
-                    
+                    <template class="template" id="cardTemplate">
+                        <div class="photo">
+                            <button
+                                aria-label="Удалить"
+                                type="button"
+                                class="button photo__delete-button"
+                            ></button>
+                            <img src="#" alt="" class="photo__image" />
+                            <h2 class="photo__title"></h2>
+                            <button
+                                aria-label="Нравится"
+                                type="button"
+                                class="button photo__like-button"
+                            ></button>
+                        </div>
+                    </template>
                 </section>
             </main>
 
@@ -159,12 +159,15 @@
             <!-- Просмотр карточки -->
             <div class="popup popup_type_image-open">
                 <div class="popup__card-container">
-                    <button aria-label="Закрыть" type="button" class="button popup__close-button popup__close-button_type_image-open"></button>
-                    <img src="#" alt=""class="popup__image">
+                    <button
+                        aria-label="Закрыть"
+                        type="button"
+                        class="button popup__close-button popup__close-button_type_image-open"
+                    ></button>
+                    <img src="#" alt="" class="popup__image" />
                     <p class="popup__image-title"></p>
                 </div>
             </div>
-
         </div>
     </body>
 </html>
