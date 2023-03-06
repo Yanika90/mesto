@@ -42,9 +42,9 @@
                 </section>
 
                 <section class="photos">
-                    <ul class="photos__list">
+                    
                         <template class="template" id="cardTemplate">
-                            <li class="photo">
+                            <div class="photo">
                                 <button
                                     aria-label="Удалить"
                                     type="button"
@@ -57,9 +57,9 @@
                                     type="button"
                                     class="button photo__like-button"
                                 ></button>
-                            </li>
+                            </div>
                         </template>
-                    </ul>
+                    
                 </section>
             </main>
 
@@ -67,13 +67,13 @@
                 <p class="footer__copyright">&#169; 2022 Mesto Russia</p>
             </footer>
 
-<!-- Поп-ап редактирования профиля -->
-            <div class="popup">
+            <!-- Поп-ап редактирования профиля -->
+            <div class="popup popup_type_edit-profile">
                 <div class="popup__container">
                     <button
                         aria-label="Закрыть"
                         type="button"
-                        class="button popup__close-button"
+                        class="button popup__close-button popup__close-button_type_profile"
                     ></button>
 
                     <h2 class="popup__title">Редактировать профиль</h2>
@@ -82,7 +82,7 @@
                         action="#"
                         name="formElement"
                         method="post"
-                        class="popup__input-form"
+                        class="popup__input-form popup__input-form_type_edit-profile"
                     >
                         <input
                             type="text"
@@ -111,134 +111,60 @@
                 </div>
             </div>
 
-<!-- Поп-ап добавления карточки -->
-<div class="popup">
-    <div class="popup__container">
-        <button
-            aria-label="Закрыть"
-            type="button"
-            class="button popup__close-button"
-        ></button>
+            <!-- Поп-ап добавления карточки -->
+            <div class="popup popup_type_add-card">
+                <div class="popup__container">
+                    <button
+                        aria-label="Закрыть"
+                        type="button"
+                        class="button popup__close-button popup__close-button_type_card"
+                    ></button>
 
-        <h2 class="popup__title">Новое место</h2>
+                    <h2 class="popup__title">Новое место</h2>
 
-        <form
-            action="#"
-            name="formElement"
-            method="post"
-            class="popup__input-form"
-        >
-            <input
-                type="text"
-                placeholder="Название места"
-                name="placeNameInput"
-                required
-                class="popup__input popup__input_type_name-place"
-            />
+                    <form
+                        action="#"
+                        name="formElement"
+                        method="post"
+                        novalidate
+                        class="popup__input-form popup__input-form_type_add-card"
+                    >
+                        <input
+                            type="text"
+                            placeholder="Название места"
+                            name="placeNameInput"
+                            required
+                            class="popup__input popup__input_type_name-place"
+                        />
 
-            <input
-                type="text"
-                placeholder="Ссылка"
-                name="placeLinkInput"
-                required
-                class="popup__input popup__input_type_link-place"
-            />
+                        <input
+                            type="url"
+                            placeholder="Ссылка"
+                            name="placeLinkInput"
+                            required
+                            class="popup__input popup__input_type_link-place"
+                        />
 
-            <button
-                aria-label="Сохранить"
-                type="submit"
-                class="button popup__save-button"
-            >
-                Сохранить
-            </button>
-        </form>
-    </div>
-</div>
+                        <button
+                            aria-label="Сохранить"
+                            type="submit"
+                            class="button popup__save-button"
+                        >
+                            Сохранить
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Просмотр карточки -->
+            <div class="popup popup_type_image-open">
+                <div class="popup__card-container">
+                    <button aria-label="Закрыть" type="button" class="button popup__close-button popup__close-button_type_image-open"></button>
+                    <img src="#" alt=""class="popup__image">
+                    <p class="popup__image-title"></p>
+                </div>
+            </div>
 
         </div>
     </body>
 </html>
-
-<!-- <li class="photo">
-                            <img
-                                src="./images/samuel-scrimshaw-bHHR2jn7dYM-unsplash.jpg"
-                                alt="Морской котик погружается в воду"
-                                class="photo__image"
-                            />
-                            <h2 class="photo__title">Морской котик</h2>
-                            <button
-                                aria-label="Нравится"
-                                type="button"
-                                class="button photo__like-button"
-                            ></button>
-                        </li>
-
-                        <li class="photo">
-                            <img
-                                src="./images/silas-baisch-Su2DbQhEils-unsplash.jpg"
-                                alt="Синий кит"
-                                class="photo__image"
-                            />
-                            <h2 class="photo__title">Синий кит</h2>
-                            <button
-                                aria-label="Нравится"
-                                type="button"
-                                class="button photo__like-button"
-                            ></button>
-                        </li>
-
-                        <li class="photo">
-                            <img
-                                src="./images/laura-nyhuis-UxDveSvETXA-unsplash.jpg"
-                                alt="Медуза"
-                                class="photo__image"
-                            />
-                            <h2 class="photo__title">Медуза</h2>
-                            <button
-                                aria-label="Нравится"
-                                type="button"
-                                class="button photo__like-button"
-                            ></button>
-                        </li>
-
-                        <li class="photo">
-                            <img
-                                src="./images/francesco-ungaro-hqAGgNsMpEY-unsplash.jpg"
-                                alt="Коралловый риф"
-                                class="photo__image"
-                            />
-                            <h2 class="photo__title">Коралловый риф</h2>
-                            <button
-                                aria-label="Нравится"
-                                type="button"
-                                class="button photo__like-button"
-                            ></button>
-                        </li>
-
-                        <li class="photo">
-                            <img
-                                src="./images/mohamed-nashah-TVDfuKOLw5U-unsplash.jpg"
-                                alt="Скат"
-                                class="photo__image"
-                            />
-                            <h2 class="photo__title">Скат</h2>
-                            <button
-                                aria-label="Нравится"
-                                type="button"
-                                class="button photo__like-button"
-                            ></button>
-                        </li>
-
-                        <li class="photo">
-                            <img
-                                src="./images/david-troeger-M8xxVih_V_U-unsplash.jpg"
-                                alt="Морская черепаха"
-                                class="photo__image"
-                            />
-                            <h2 class="photo__title">Морская черепаха</h2>
-                            <button
-                                aria-label="Нравится"
-                                type="button"
-                                class="button photo__like-button"
-                            ></button>
-                        </li> -->

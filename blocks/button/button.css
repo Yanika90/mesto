@@ -5,5 +5,5 @@
     box-sizing: border-box;
     border: rgb(255, 255, 255);
     cursor: pointer;
-    transition: opacity 0.3s ease-in;
+    transition: opacity 0.2s ease-in;
 }
