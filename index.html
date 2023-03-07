@@ -1,173 +1,155 @@
 <!DOCTYPE html>
 <html lang="ru">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Mesto</title>
-        <link rel="stylesheet" href="./pages/index.css" />
-        <script src="./scripts/index.js" defer></script>
-    </head>
-    <body class="body">
-        <div class="page">
-            <header class="header">
-                <img
-                    src="./images/logo.svg"
-                    alt="Логотип Место"
-                    class="header__logo"
-                />
-            </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mesto</title>
+    <link rel="stylesheet" href="./pages/index.css" />
+    <script src="./scripts/index.js" defer></script>
+  </head>
+  <body class="body">
+    <div class="page">
+      <header class="header">
+        <img src="./images/logo.svg" alt="Логотип Место" class="header__logo" />
+      </header>
 
-            <main class="content">
-                <section class="profile">
-                    <img
-                        src="./images/jacques-cousteau.jpg"
-                        alt="Аватар пользователя"
-                        class="profile__avatar"
-                    />
-                    <div class="profile__info">
-                        <h1 class="profile__name">Жак-Ив Кусто</h1>
-                        <button
-                            aria-label="Редактировать профиль"
-                            type="button"
-                            class="button profile__edit-button"
-                        ></button>
-                        <p class="profile__about-yourself">
-                            Исследователь океана
-                        </p>
-                    </div>
-                    <button
-                        aria-label="Добавить"
-                        type="button"
-                        class="button profile__add-button"
-                    ></button>
-                </section>
+      <main class="content">
+        <section class="profile">
+          <img
+            src="./images/jacques-cousteau.jpg"
+            alt="Аватар пользователя"
+            class="profile__avatar"
+          />
+          <div class="profile__info">
+            <h1 class="profile__name">Жак-Ив Кусто</h1>
+            <button
+              aria-label="Редактировать профиль"
+              type="button"
+              class="button profile__edit-button"
+            ></button>
+            <p class="profile__about-yourself">Исследователь океана</p>
+          </div>
+          <button aria-label="Добавить" type="button" class="button profile__add-button"></button>
+        </section>
 
-                <section class="photos">
-                    <template class="template" id="cardTemplate">
-                        <div class="photo">
-                            <button
-                                aria-label="Удалить"
-                                type="button"
-                                class="button photo__delete-button"
-                            ></button>
-                            <img src="#" alt="" class="photo__image" />
-                            <h2 class="photo__title"></h2>
-                            <button
-                                aria-label="Нравится"
-                                type="button"
-                                class="button photo__like-button"
-                            ></button>
-                        </div>
-                    </template>
-                </section>
-            </main>
-
-            <footer class="footer">
-                <p class="footer__copyright">&#169; 2022 Mesto Russia</p>
-            </footer>
-
-            <!-- Поп-ап редактирования профиля -->
-            <div class="popup popup_type_edit-profile">
-                <div class="popup__container">
-                    <button
-                        aria-label="Закрыть"
-                        type="button"
-                        class="button popup__close-button popup__close-button_type_profile"
-                    ></button>
-
-                    <h2 class="popup__title">Редактировать профиль</h2>
-
-                    <form
-                        action="#"
-                        name="formElement"
-                        method="post"
-                        class="popup__input-form popup__input-form_type_edit-profile"
-                    >
-                        <input
-                            type="text"
-                            placeholder="Имя"
-                            name="userNameInput"
-                            required
-                            class="popup__input popup__input_type_name"
-                        />
-
-                        <input
-                            type="text"
-                            placeholder="О себе"
-                            name="userAboutYourselfInput"
-                            required
-                            class="popup__input popup__input_type_about-yourself"
-                        />
-
-                        <button
-                            aria-label="Сохранить"
-                            type="submit"
-                            class="button popup__save-button"
-                        >
-                            Сохранить
-                        </button>
-                    </form>
-                </div>
+        <section class="photos">
+          <template class="template" id="cardTemplate">
+            <div class="photo">
+              <button
+                aria-label="Удалить"
+                type="button"
+                class="button photo__delete-button"
+              ></button>
+              <img src="#" alt="" class="photo__image" />
+              <h2 class="photo__title"></h2>
+              <button
+                aria-label="Нравится"
+                type="button"
+                class="button photo__like-button"
+              ></button>
             </div>
+          </template>
+        </section>
+      </main>
 
-            <!-- Поп-ап добавления карточки -->
-            <div class="popup popup_type_add-card">
-                <div class="popup__container">
-                    <button
-                        aria-label="Закрыть"
-                        type="button"
-                        class="button popup__close-button popup__close-button_type_card"
-                    ></button>
+      <footer class="footer">
+        <p class="footer__copyright">&#169; 2022 Mesto Russia</p>
+      </footer>
 
-                    <h2 class="popup__title">Новое место</h2>
+      <!-- Поп-ап редактирования профиля -->
+      <div class="popup popup_type_edit-profile">
+        <div class="popup__container">
+          <button
+            aria-label="Закрыть"
+            type="button"
+            class="button popup__close-button popup__close-button_type_profile"
+          ></button>
 
-                    <form
-                        action="#"
-                        name="formElement"
-                        method="post"
-                        novalidate
-                        class="popup__input-form popup__input-form_type_add-card"
-                    >
-                        <input
-                            type="text"
-                            placeholder="Название места"
-                            name="placeNameInput"
-                            required
-                            class="popup__input popup__input_type_name-place"
-                        />
+          <h2 class="popup__title">Редактировать профиль</h2>
 
-                        <input
-                            type="url"
-                            placeholder="Ссылка"
-                            name="placeLinkInput"
-                            required
-                            class="popup__input popup__input_type_link-place"
-                        />
+          <form
+            action="#"
+            name="formProfile"
+            method="post"
+            class="popup__input-form popup__input-form_type_edit-profile"
+          >
+            <input
+              type="text"
+              placeholder="Имя"
+              name="userNameInput"
+              required
+              class="popup__input popup__input_type_name"
+            />
 
-                        <button
-                            aria-label="Сохранить"
-                            type="submit"
-                            class="button popup__save-button"
-                        >
-                            Сохранить
-                        </button>
-                    </form>
-                </div>
-            </div>
+            <input
+              type="text"
+              placeholder="О себе"
+              name="userAboutYourselfInput"
+              required
+              class="popup__input popup__input_type_about-yourself"
+            />
 
-            <!-- Просмотр карточки -->
-            <div class="popup popup_type_image-open">
-                <div class="popup__card-container">
-                    <button
-                        aria-label="Закрыть"
-                        type="button"
-                        class="button popup__close-button popup__close-button_type_image-open"
-                    ></button>
-                    <img src="#" alt="" class="popup__image" />
-                    <p class="popup__image-title"></p>
-                </div>
-            </div>
+            <button aria-label="Сохранить" type="submit" class="button popup__save-button">
+              Сохранить
+            </button>
+          </form>
         </div>
-    </body>
+      </div>
+
+      <!-- Поп-ап добавления карточки -->
+      <div class="popup popup_type_add-card">
+        <div class="popup__container">
+          <button
+            aria-label="Закрыть"
+            type="button"
+            class="button popup__close-button popup__close-button_type_card"
+          ></button>
+
+          <h2 class="popup__title">Новое место</h2>
+
+          <form
+            action="#"
+            name="formCard"
+            method="post"
+            novalidate
+            class="popup__input-form popup__input-form_type_add-card"
+          >
+            <input
+              type="text"
+              placeholder="Название места"
+              name="placeNameInput"
+              required
+              class="popup__input popup__input_type_name-place"
+            />
+
+            <input
+              type="url"
+              placeholder="Ссылка"
+              name="placeLinkInput"
+              required
+              class="popup__input popup__input_type_link-place"
+            />
+
+            <button aria-label="Сохранить" type="submit" class="button popup__save-button">
+              Сохранить
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Просмотр карточки -->
+      <div class="popup popup_type_image-open">
+        <div class="popup__card-container">
+          <button
+            aria-label="Закрыть"
+            type="button"
+            class="button popup__close-button popup__close-button_type_image-open"
+          ></button>
+          <img src="#" alt="" class="popup__image" />
+          <p class="popup__image-title"></p>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
