@@ -68,23 +68,32 @@
             action="#"
             name="formProfile"
             method="post"
+            novalidate
             class="popup__input-form popup__input-form_type_edit-profile"
           >
             <input
               type="text"
               placeholder="Имя"
               name="userNameInput"
+              id="name"
+              minlength="2"
+              maxlength="40"
               required
               class="popup__input popup__input_type_name"
             />
+            <span class="popup__input-error name-error"></span>
 
             <input
               type="text"
               placeholder="О себе"
               name="userAboutYourselfInput"
+              id="about-yourself"
+              minlength="2"
+              maxlength="200"
               required
               class="popup__input popup__input_type_about-yourself"
             />
+            <span class="popup__input-error about-yourself-error"></span>
 
             <button aria-label="Сохранить" type="submit" class="button popup__save-button">
               Сохранить
@@ -111,20 +120,29 @@
               type="text"
               placeholder="Название места"
               name="placeNameInput"
+              id="name-place"
+              minlength="2"
+              maxlength="30"
               required
               class="popup__input popup__input_type_name-place"
             />
+            <span class="popup__input-error name-place-error"></span>
 
             <input
               type="url"
-              placeholder="Ссылка"
+              placeholder="Ссылка на картинку"
               name="placeLinkInput"
+              id="link-place"
+              pattern="https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)"
+              minlength="5"
+              maxlength="20"
               required
               class="popup__input popup__input_type_link-place"
             />
+            <span class="popup__input-error link-place-error"></span>
 
             <button aria-label="Сохранить" type="submit" class="button popup__save-button">
-              Сохранить
+              Создать
             </button>
           </form>
         </div>
