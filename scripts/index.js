@@ -14,10 +14,12 @@ const userAboutYourselfInput = document.querySelector('.popup__input_type_about-
 //Общие функции: открытия и закрытия поп-апов
 function openPopup(popup) {
   popup.classList.add('popup_opened');
+  document.addEventListener('keydown', handleClosePopupEsc);
 }
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', handleClosePopupEsc);
 }
 
 closeButtons.forEach(button => {
@@ -27,12 +29,33 @@ closeButtons.forEach(button => {
   button.addEventListener('click', () => closePopup(popup));
 });
 
+// Функция закрытия поп-апов по клику на оверлэй
+const popups = document.querySelectorAll('.popup');
+popups.forEach(popup => {
+  popup.addEventListener('mousedown', evt => {
+    if (evt.target.classList.contains('popup_opened')) {
+      closePopup(popup);
+    }
+    if (evt.target.classList.contains('popup_opened')) {
+      closePopup(popup);
+    }
+  });
+});
+
 // Функция редактирования профиля: перезапись данных, присвоение
 function handleProfileEdit(evt) {
   evt.preventDefault(); // отмена отправки формы
   profileName.textContent = userNameInput.value; // новое содержимое-значение (value) присваивается полю ввода имени - свойству textContent переменной
   profileAboutYourself.textContent = userAboutYourselfInput.value; // аналогично
   closePopup(profilePopup);
+}
+
+// Функция закрытия поп-апов по Esc (передать слушатель в open и снять с close)
+function handleClosePopupEsc(evt) {
+  if (evt.key === 'Escape') {
+    const popupOpened = document.querySelector('.popup_opened');
+    closePopup(popupOpened);
+  }
 }
 
 // Обработчики события для профиля по клику: открытие и закрытие
@@ -170,7 +193,7 @@ function handleLikeButtonClick(evt) {
 popupAddCardButton.addEventListener('click', function () {
   openPopup(cardPopup);
   formElementCard.reset();
-  clearInputError(config, cardPopup);
+  resetFormError(config, cardPopup);
 });
 
 // СПРИНТ 6
