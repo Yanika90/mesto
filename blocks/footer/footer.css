@@ -1,13 +1,17 @@
 .footer {
-    max-width: 318px;
-    max-height: 18px;
-    width: 100%;
-    margin: 67px auto 60px 200px;
+  width: 100%;
+  max-width: 880px;
+  max-height: 18px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+
+  margin: 67px auto 60px 200px;
 }
 
 @media (max-width: 1050px) {
-    .footer {
-        max-width: 282px;
-        margin: 48px 0 36px 0;
-    }
+  .footer {
+    max-width: 282px;
+    margin: 48px 0 36px 0;
+  }
 }
