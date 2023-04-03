@@ -1,6 +1,8 @@
 import { Card, photoCards } from './Card.js';
 import { FormValidator, config } from './FormValidator.js';
 
+//----------------------------------------------- ГЛОБАЛЬНЫЕ ПЕРЕМЕННЫЕ ------------------------------------------------------//
+
 //Поп-апы
 const popups = document.querySelectorAll('.popup'); // все поп-апы
 const profilePopup = document.querySelector('.popup_type_edit-profile'); // профиль
@@ -26,18 +28,30 @@ const placeLinkInput = document.querySelector('.popup__input_type_link-place'); 
 //Контейнер с карточками
 const cardsContainer = document.querySelector('.photos');
 
-//Валидация форм
+// Передаем содержимое template методом .content
+const cardTemplateSelector = document.querySelector('#cardTemplate').content;
+
+//Попап изображения
+const imagePopupOpen = document.querySelector('.popup_type_image-open'); // открытая картинка
+const imagePopup = document.querySelector('.popup__image'); // картинка
+const imageTitle = document.querySelector('.popup__image-title'); // подпись
+
+//------------------------------------------- ВАЛИДАЦИЯ ФОРМ ------------------------------------------------------//
+
 const validationProfilePopup = new FormValidator(config, profilePopup); // профиль
 validationProfilePopup.enableValidation();
 const validationCardPopup = new FormValidator(config, cardPopup); // карточка
 validationCardPopup.enableValidation();
 
-//Общие функции: открытия и закрытия поп-апов
+//--------------------------------------- ОБЩИЕ ФУНКЦИИ ОТКРЫТИЯ И ЗАКРЫТИЯ ПОП-АПОВ ---------------------------------------------//
+
+//Функция открытия поп-апа
 function openPopup(popup) {
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', handleClosePopupEsc);
 }
 
+//Функция закрытия поп-апа
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
   document.removeEventListener('keydown', handleClosePopupEsc);
@@ -64,6 +78,8 @@ function handleClosePopupEsc(evt) {
   }
 }
 
+//----------------------------------------------- ВСЁ, ЧТО КАСАЕТСЯ ПРОФИЛЯ ------------------------------------------------------//
+
 // Функция редактирования профиля: перезапись данных, присвоение
 function handleProfileEdit(evt) {
   evt.preventDefault(); // отмена отправки формы
@@ -83,19 +99,36 @@ profileButtonEdit.addEventListener('click', function () {
 // Обработчик «отправки» данных формы (submit)
 formElementProfile.addEventListener('submit', handleProfileEdit);
 
-// Выполнение функции создания карточки для каждого элемента (метод forEach принимает функцию в качестве аргумента)
+//----------------------------------------------- ВСЁ, ЧТО КАСАЕТСЯ КАРТОЧКИ ------------------------------------------------------//
+
+// Создаем карточку и возвращаем ее
+function createCard(data) {
+  const newCard = new Card(data, '#cardTemplate', handleCardClick);
+  const cardElement = newCard.generateCard();
+  return cardElement;
+}
+
+// Отрисовка карточки для каждого элемента (метод forEach принимает функцию в качестве аргумента)
 photoCards.forEach(card => {
-  addCard(card);
+  const cardElement = createCard(card);
+  cardsContainer.append(cardElement);
 });
 
-//Добавляем карточку на страницу
+// Добавляем карточку на страницу
 function addCard(card) {
-  const newCard = new Card(card, '#cardTemplate');
-  const cardElement = newCard.generateCard();
+  const cardElement = createCard(card);
   cardsContainer.prepend(cardElement);
 }
 
-// функция отправки данных формы добавления карточки
+// Открываем карточку по клику
+function handleCardClick(title, image) {
+  imageTitle.textContent = title;
+  imagePopup.src = image;
+  imagePopup.alt = title;
+  openPopup(imagePopupOpen);
+}
+
+// Функция отправки данных формы добавления карточки
 function handleCardAdd(evt) {
   evt.preventDefault();
   const title = placeNameInput.value;
@@ -115,5 +148,3 @@ popupAddCardButton.addEventListener('click', function () {
   formElementCard.reset();
   validationCardPopup.resetFormError();
 });
-
-export { openPopup };
