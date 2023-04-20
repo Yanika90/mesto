@@ -1,6 +1,4 @@
-// СПРИНТ 6-7
-// Валидация форм console.log()
-import { config } from './configValidation.js';
+// Валидация форм
 class FormValidator {
   constructor(config, formElement) {
     this._formSelector = config.formSelector;

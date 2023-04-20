@@ -1,7 +1,7 @@
 export default class Section {
   // Объект:
   // items — массив данных для добавления на страницу при инициализации класса;
-  // renderer — функция созданиz и отрисовкb данных на странице.
+  // renderer — функция создания и отрисовки данных на странице.
   // containerSelector - селектор контейнера, в который нужно добавлять созданные элементы.
   constructor({ items, renderer }, containerSelector) {
     this._renderedItems = items;

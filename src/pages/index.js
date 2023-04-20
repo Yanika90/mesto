@@ -1,49 +1,31 @@
-import { photoCards } from './photoCards.js';
-import { Card } from './Card.js';
-import { config } from './configValidation.js';
-import { FormValidator } from './FormValidator.js';
-import Section from './Section.js';
-import PopupWithImage from './PopupWithImage.js';
-import PopupWithForm from './PopupWithForm.js';
-import UserInfo from './UserInfo.js';
+import './index.css';
+import {
+  profilePopup,
+  cardPopup,
+  profileButtonEdit,
+  popupAddCardButton,
+  userNameInput,
+  userAboutYourselfInput
+} from '../utils/restConst.js';
+import { photoCards } from '../utils/photoCards.js';
+import { Card } from '../components/Card.js';
+import { config } from '../utils/configValidation.js';
+import { FormValidator } from '../components/FormValidator.js';
+import Section from '../components/Section.js';
+import PopupWithImage from '../components/PopupWithImage.js';
+import PopupWithForm from '../components/PopupWithForm.js';
+import UserInfo from '../components/UserInfo.js';
 
-//----------------------------------------------- ГЛОБАЛЬНЫЕ ПЕРЕМЕННЫЕ ------------------------------------------------------//
+//------------------------------------------- ВАЛИДАЦИЯ ФОРМ ------------------------------------------------------//
 
-//Поп-апы
-const popups = document.querySelectorAll('.popup'); // все поп-апы
-const profilePopup = document.querySelector('.popup_type_edit-profile'); // профиль
-const cardPopup = document.querySelector('.popup_type_add-card'); // фотокарточка
+const validationProfilePopup = new FormValidator(config, profilePopup); // профиль
+validationProfilePopup.enableValidation();
+const validationCardPopup = new FormValidator(config, cardPopup); // карточка
+validationCardPopup.enableValidation();
 
-//Кнопки открытия и закрытия поп-апов
-const profileButtonEdit = document.querySelector('.profile__edit-button'); //  редактировать профиль
-const popupAddCardButton = document.querySelector('.profile__add-button'); //  добавить карточку
-const closeButtons = document.querySelectorAll('.popup__close-button'); //  все крестики
-const submitButton = document.querySelectorAll('popup__save-button');
+//--------------------------------------------- КЛАССЫ ФОРМ ---------------------------------------------------//
 
-//Форма редактирования профиля
-const formElementProfile = document.querySelector('.popup__input-form_type_edit-profile'); // форма для ввода данных
-const profileName = document.querySelector('.profile__name'); // данные профиля в строке "имя"
-const profileAboutYourself = document.querySelector('.profile__about-yourself'); // данные профиля в строке "о себе"
-const userNameInput = document.querySelector('.popup__input_type_name'); // поле ввода "имя"
-const userAboutYourselfInput = document.querySelector('.popup__input_type_about-yourself'); // поле ввода "о себе"
-
-//Форма добавления карточки
-const formElementCard = document.querySelector('.popup__input-form_type_add-card'); // форма для ввода данных
-const placeNameInput = document.querySelector('.popup__input_type_name-place'); // название карточки
-const placeLinkInput = document.querySelector('.popup__input_type_link-place'); // ссылка на картинку
-
-//Контейнер с карточками
-const cardsContainer = document.querySelector('.photos'); //
-
-// Передаем содержимое template методом .content
-const cardTemplateSelector = document.querySelector('#cardTemplate').content; //
-
-//Попап изображения
-const imagePopupOpen = document.querySelector('.popup_type_image-open'); // открытая картинка
-const imagePopup = document.querySelector('.popup__image'); // картинка
-const imageTitle = document.querySelector('.popup__image-title'); // подпись
-
-//--------------------------------------------- КЛАССЫ ФОРМ --------------------------//
+// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~  ВСЁ, ЧТО КАСАЕТСЯ ПРОФИЛЯ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ //
 
 // О пользователе
 const userInfo = new UserInfo({
@@ -70,6 +52,8 @@ profileButtonEdit.addEventListener('click', function () {
   validationProfilePopup.resetFormError();
 });
 
+// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ВСЁ, ЧТО КАСАЕТСЯ КАРТОЧЕК ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ //
+
 // Фотокарточка
 const popupCard = new PopupWithForm('.popup_type_add-card', {
   handleSubmitForm: data => {
@@ -88,7 +72,7 @@ popupAddCardButton.addEventListener('click', () => {
 
 const cardSection = new Section(
   {
-    items: photoCards,
+    items: photoCards.reverse(),
     renderer: data => {
       const card = createCard(data);
       cardSection.addItem(card);
@@ -102,8 +86,8 @@ cardSection.renderItems();
 // Создаем карточку и возвращаем ее
 function createCard(data) {
   const newCard = new Card(data, '#cardTemplate', {
-    handleCardClick: ({ title, image }) => {
-      popupWithImage.open({ title, image });
+    handleCardClick: item => {
+      popupWithImage.open(item);
     }
   });
   const cardElement = newCard.generateCard();
@@ -113,12 +97,40 @@ function createCard(data) {
 const popupWithImage = new PopupWithImage('.popup_type_image-open');
 popupWithImage.setEventListeners();
 
-//------------------------------------------- ВАЛИДАЦИЯ ФОРМ ------------------------------------------------------//
+//----------------------------------------------- ГЛОБАЛЬНЫЕ ПЕРЕМЕННЫЕ ------------------------------------------------------//
+//Поп-апы
+//const popups = document.querySelectorAll('.popup'); // все поп-апы
+// const profilePopup = document.querySelector('.popup_type_edit-profile'); // профиль
+// const cardPopup = document.querySelector('.popup_type_add-card'); // фотокарточка
 
-const validationProfilePopup = new FormValidator(config, profilePopup); // профиль
-validationProfilePopup.enableValidation();
-const validationCardPopup = new FormValidator(config, cardPopup); // карточка
-validationCardPopup.enableValidation();
+// //Кнопки открытия и закрытия поп-апов
+// const profileButtonEdit = document.querySelector('.profile__edit-button'); //  редактировать профиль
+// const popupAddCardButton = document.querySelector('.profile__add-button'); //  добавить карточку
+// // const closeButtons = document.querySelectorAll('.popup__close-button'); //  все крестики
+// // const submitButton = document.querySelectorAll('popup__save-button');
+
+// // //Форма редактирования профиля
+// // const formElementProfile = document.querySelector('.popup__input-form_type_edit-profile'); // форма для ввода данных
+// // const profileName = document.querySelector('.profile__name'); // данные профиля в строке "имя"
+// // const profileAboutYourself = document.querySelector('.profile__about-yourself'); // данные профиля в строке "о себе"
+// const userNameInput = document.querySelector('.popup__input_type_name'); // поле ввода "имя"
+// const userAboutYourselfInput = document.querySelector('.popup__input_type_about-yourself'); // поле ввода "о себе"
+
+// //Форма добавления карточки
+// const formElementCard = document.querySelector('.popup__input-form_type_add-card'); // форма для ввода данных
+// const placeNameInput = document.querySelector('.popup__input_type_name-place'); // название карточки
+// const placeLinkInput = document.querySelector('.popup__input_type_link-place'); // ссылка на картинку
+
+// //Контейнер с карточками
+// const cardsContainer = document.querySelector('.photos'); //
+
+// // Передаем содержимое template методом .content
+// const cardTemplateSelector = document.querySelector('#cardTemplate').content; //
+
+// //Попап изображения
+// const imagePopupOpen = document.querySelector('.popup_type_image-open'); // открытая картинка
+// const imagePopup = document.querySelector('.popup__image'); // картинка
+// const imageTitle = document.querySelector('.popup__image-title'); // подпись
 
 //--------------------------------------- ОБЩИЕ ФУНКЦИИ ОТКРЫТИЯ И ЗАКРЫТИЯ ПОП-АПОВ ---------------------------------------------//
 
