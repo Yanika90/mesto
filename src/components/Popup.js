@@ -1,16 +1,17 @@
 export default class Popup {
   constructor(popupSelector) {
     this._popup = document.querySelector(popupSelector);
+    this._handleClosePopupEsc = this._handleClosePopupEsc.bind(this);
   }
 
   open() {
     this._popup.classList.add('popup_opened');
-    document.addEventListener('keydown', this._handleClosePopupEsc.bind(this));
+    document.addEventListener('keydown', this._handleClosePopupEsc);
   }
 
   close() {
     this._popup.classList.remove('popup_opened');
-    document.removeEventListener('keydown', this._handleClosePopupEsc.bind(this));
+    document.removeEventListener('keydown', this._handleClosePopupEsc);
   }
 
   // Функция закрытия поп-апов по Esc (передать слушатель в open и снять с close)
