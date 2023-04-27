@@ -80,6 +80,7 @@ const cardSection = new Section(
   },
   '.photos'
 );
+//console.log(cardSection);
 
 cardSection.renderItems();
 
@@ -93,6 +94,7 @@ function createCard(data) {
   const cardElement = newCard.generateCard();
   return cardElement;
 }
+//console.log(createCard);
 
 const popupWithImage = new PopupWithImage('.popup_type_image-open');
 popupWithImage.setEventListeners();
