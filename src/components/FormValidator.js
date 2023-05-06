@@ -56,7 +56,7 @@ class FormValidator {
 
   // накладываем обработчики на поля форм
   _setEventListeners = () => {
-    //находим импуты
+    //находим инпуты
     this._inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector));
     // находим кнопку "сохранить"
     this._buttonElement = this._formElement.querySelector(this._submitButtonSelector);

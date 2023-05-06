@@ -14,11 +14,14 @@
 
       <main class="content">
         <section class="profile">
-          <img
-            src="<%=require('./images/jacques-cousteau.jpg')%>"
-            alt="Аватар пользователя"
-            class="profile__avatar"
-          />
+          <div class="profile__avatar-edit">
+            <img
+              src="<%=require('./images/jacques-cousteau.jpg')%>"
+              alt="Аватар пользователя"
+              class="profile__avatar"
+            />
+          </div>
+
           <div class="profile__info">
             <h1 class="profile__name">Жак-Ив Кусто</h1>
             <button
@@ -40,12 +43,17 @@
                 class="button photo__delete-button"
               ></button>
               <img src="#" alt="" class="photo__image" />
-              <h2 class="photo__title"></h2>
-              <button
-                aria-label="Нравится"
-                type="button"
-                class="button photo__like-button"
-              ></button>
+              <div class="photo__info-elements">
+                <h2 class="photo__title"></h2>
+                <div class="photo__like-elements">
+                  <button
+                    aria-label="Нравится"
+                    type="button"
+                    class="button photo__like-button"
+                  ></button>
+                  <p class="photo__like-count">0</p>
+                </div>
+              </div>
             </div>
           </template>
         </section>
@@ -151,6 +159,57 @@
           <button aria-label="Закрыть" type="button" class="button popup__close-button"></button>
           <img src="#" alt="" class="popup__image" />
           <p class="popup__image-title"></p>
+        </div>
+      </div>
+
+      <!-- Поп-ап удаления карточки -->
+      <div class="popup popup_type_image-delete">
+        <div class="popup__container">
+          <button aria-label="Закрыть" type="button" class="button popup__close-button"></button>
+          <h2 class="popup__title">Вы уверены?</h2>
+          <form
+            action="#"
+            name="formDeleteCard"
+            method="post"
+            novalidate
+            class="popup__input-form popup__input-form_type_delete-card"
+          >
+            <button aria-label="Удалить карточку" type="submit" class="button popup__save-button">
+              Да
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Поп-ап редактирования аватарки -->
+      <div class="popup popup_type_avatar-edit">
+        <div class="popup__container">
+          <button aria-label="Закрыть" type="button" class="button popup__close-button"></button>
+          <h2 class="popup__title">Обновить аватар</h2>
+
+          <form
+            action="#"
+            name="formAvatar"
+            method="post"
+            novalidate
+            class="popup__input-form popup__input-form_type_avatar-edit"
+          >
+            <input
+              type="url"
+              placeholder="Ссылка на картинку"
+              name="avatarLinkInput"
+              id="link-avatar"
+              minlength="5"
+              maxlength="100"
+              required
+              class="popup__input popup__input_type_link-avatar"
+            />
+            <span class="popup__input-error link-avatar-error"></span>
+
+            <button aria-label="Сохранить" type="submit" class="button popup__save-button">
+              Сохранить
+            </button>
+          </form>
         </div>
       </div>
     </div>

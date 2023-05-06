@@ -14,7 +14,6 @@ export default class Popup {
     document.removeEventListener('keydown', this._handleClosePopupEsc);
   }
 
-  // Функция закрытия поп-апов по Esc (передать слушатель в open и снять с close)
   _handleClosePopupEsc(evt) {
     if (evt.key === 'Escape') {
       this.close();
